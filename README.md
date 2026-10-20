@@ -6,6 +6,10 @@ The initial implementation targets a finite policy over `0`–`5`, `?`, and `!`,
 
 ## Start here
 
+[**Open the launcher in Google Colab**](https://colab.research.google.com/github/syedzahedi1990/followuprl/blob/main/notebooks/colab_launcher.ipynb)
+
+Select Python 3.12 and an L4 or A100 GPU. The notebook fetches the pinned source commit directly from GitHub. Fill in the first cell's runtime, cash-accounting, and Drive settings, then run the cells in order. The initial job is capped at three training updates and 30 minutes including setup. If this repository is private, the notebook explains how to use a read-only GitHub token through Colab Secrets.
+
 - [Execution plan](execution_plan.md): current resources, gates, remaining inputs, and budget assumptions.
 - [Paper 1 context](docs/paper1_context.md): reviewed manuscript/code, saved-evidence replay, scientific corrections, and implications for this pilot.
 - [GPU/Colab deployment](docs/DEPLOYMENT.md): exact hardware, lock installation, durable storage, bounded jobs, and shutdown.

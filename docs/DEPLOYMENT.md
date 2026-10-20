@@ -27,7 +27,7 @@ Colab Pro can run the same smoke test if it assigns an **L4 or A100**. Hardware 
 
 ## Source and installation
 
-The current repository may still have no remote commit containing this implementation. Use the supplied source archive and retain its SHA-256 until a specific Git commit is published. Do not clone an empty `main` and assume this code is present. For a Git deployment, check out the exact reviewed commit, not a moving branch.
+The [GitHub repository](https://github.com/syedzahedi1990/followuprl) contains the source, dependency locks, configurations, tests, and launcher. The Colab notebook defaults to Git mode with the reviewed implementation commit already filled in. It checks out and records that exact SHA. An optional source ZIP path records its SHA-256 instead.
 
 From the repository root on the GPU runtime:
 
@@ -158,7 +158,11 @@ The project does not install or invoke the provider CLI, and no provider-side bi
 
 ## Colab
 
-Open [the launcher notebook](../notebooks/colab_launcher.ipynb) in your own Colab account. It inspects the assigned GPU, imports an exact source archive or Git revision, installs the same lock/package, mounts a chosen Drive destination, creates local authorized configuration, runs CPU checks, real-model preflight, real-model fresh-process resume validation, and the bounded CLI job, then exports completed snapshots. One shared 30-minute session deadline includes source/setup/checks/training; each command receives only the remaining time, with time reserved for export. A timeout prevents further work and preserves available diagnostics. For interruption recovery, set `RESTORE_BUNDLE` to a completed export; the notebook uses the verified restore command and the same session authorization fields. It never maintains separate training code.
+[Open the launcher directly in Colab](https://colab.research.google.com/github/syedzahedi1990/followuprl/blob/main/notebooks/colab_launcher.ipynb). Select Python 3.12 and an L4 or A100. Keep the prefilled `SOURCE_MODE = "git"` and source commit. In the first cell, set `RUNTIME_AUTHORIZED = True`, enter the session's actual incremental cash allowance/rate, and confirm the intended Drive destination with `DURABILITY_CONFIRMED = True`. If there is no additional cash allowance or billing beyond the existing subscription, explicitly set both cash fields to `0.0`; compute-unit usage and elapsed time remain relevant. Run the cells in order.
+
+For a private repository, authorize Colab's GitHub notebook access and create a fine-grained token limited to this repository with **Contents: Read-only**. Add it through Colab's **Secrets** panel, enable notebook access, and put only its secret name in `GITHUB_TOKEN_SECRET`. The launcher uses a temporary Git askpass helper and a per-process environment variable; it does not store the token in the repository, URL, or notebook output. Browser access alone does not authenticate runtime Git. The alternative is **Code → Download ZIP** on GitHub followed by the notebook's upload mode. Neither path requires downloading files from this chat or changing repository visibility.
+
+The [launcher notebook](../notebooks/colab_launcher.ipynb) inspects the assigned GPU, imports the exact Git revision or source archive, installs the same lock/package, mounts a chosen Drive destination, creates local authorized configuration, runs CPU checks, real-model preflight, real-model fresh-process resume validation, and the bounded CLI job, then exports completed snapshots. One shared 30-minute session deadline includes source/setup/checks/training; each command receives only the remaining time, with time reserved for export. A timeout prevents further work and preserves available diagnostics. For interruption recovery, set `RESTORE_BUNDLE` to a completed export; the notebook uses the verified restore command and the same session authorization fields. It never maintains separate training code.
 
 There is no Colab account-control connector in the current chat. Supplying a password or browser session is unnecessary. Run the notebook yourself, or provide a specifically authorized remote execution channel. Use Colab's secret facilities only if a gated artifact actually needs them; public Qwen downloads should not require inventing a token. Do not put credentials in notebook cells or outputs.
 
