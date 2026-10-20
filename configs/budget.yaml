@@ -1,0 +1,14 @@
+project_ceiling_usd: 500
+authorized_spend_usd: null
+hourly_rate_usd: null
+contingency_multiplier: 1.25
+stage_caps_usd:
+  validation: 50
+  pilot: 100
+  recovery: 200
+  confirmation: 100
+  reserve: 50
+# Planning allowances are not permission to spend.
+# Local timing covers the process, not provider idle/storage charges.
+durable_destination: null
+

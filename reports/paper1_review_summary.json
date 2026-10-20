@@ -1,0 +1,328 @@
+{
+  "prepared_utc": "2026-10-20T14:15:11.648916+00:00",
+  "scope": "Read-only Paper 1 context review, CPU saved-prediction replay, symbolic enumeration, and Project A preflight diagnostic validation. No pretrained model executions.",
+  "sources": {
+    "manuscript_zip": {
+      "file": "ICLR_sub_copy.zip",
+      "sha256": "89b1a9a98d0b9c5eff4ceb3779da1d9f6ab00051a4044e62dfe369477cc2cac6",
+      "contents": "LaTeX manuscript and appendix; supplied historical validation metadata is not a new check"
+    },
+    "repository": {
+      "url": "https://github.com/syedzahedi1990/Beyond-the-fitted-Scope---Causal-keys",
+      "commit": "a89e6e643410b14055ef8cf746ac609b80ade0f4",
+      "release_subdirectory": "v5.5-reviewer-repository",
+      "checkout_unchanged": true
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "packages": {
+      "numpy": "2.5.4",
+      "torch": "2.11.0+cpu",
+      "transformers": "5.20.2",
+      "peft": "0.21.2"
+    },
+    "paper1_numpy_pin": "2.3.5",
+    "replay_numpy_differs_from_paper1_pin": true
+  },
+  "release_integrity": {
+    "status": "FAIL",
+    "command": "python -m reproduce --verify-only",
+    "exit_code": 1,
+    "repository_commit": "a89e6e643410b14055ef8cf746ac609b80ade0f4",
+    "checked": 123,
+    "matching": 122,
+    "mismatches": [
+      {
+        "file": "README.md",
+        "actual_bytes": 151,
+        "expected_bytes": 4929,
+        "actual_sha256": "26d7fee6670ab3c1ad17c0ab659890191b09a7d849766ea0684d108d724145a9",
+        "expected_sha256": "e39742e72a6150a6e2ef666b1f43162a2a51a9141369e03fce8e1d39bdb19f7a"
+      }
+    ],
+    "unmodified": true,
+    "interpretation": "README-only size/hash mismatch prevents aggregate replay. Direct component calculations retain their own data, completeness and expected-value checks. No manifest or repository files changed."
+  },
+  "paper1_cpu_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "tests_passed": 51,
+    "skipped": 0,
+    "log": "unittest.log"
+  },
+  "behavior_replay": {
+    "command": "python -m reproduce.behavior --output <new-output-directory>",
+    "exit_code": 0,
+    "receipt": {
+      "ci_signs_compared_without_tolerance": true,
+      "data_manifest_sha256": "d03844ca85bf9a799ac63042c086b9cd0d188ba43798dea5263631c902efc297",
+      "expected_reference_compared": true,
+      "expected_reference_sha256": "f1d6263a4224827c9026cb2b2b1fde25778267c67d3e56347448c5eedaf8c6f3",
+      "input_files": {
+        "main.json.gz": {
+          "bytes": 983253,
+          "sha256": "2241be8a7eb9a8241de492736dd4fcee12e088e30b28cdfe8245e971522ae154",
+          "uncompressed_bytes": 4383510,
+          "uncompressed_sha256": "89612e4e6a31aa4bca3121ab26e916c75ae2ed1f1bd6031309dc136af097941e"
+        },
+        "mediation.json.gz": {
+          "bytes": 3449738,
+          "sha256": "7b58c067560d10e96559758e478f67791904e4f658e172393ed9916f2eb9f451",
+          "uncompressed_bytes": 15490220,
+          "uncompressed_sha256": "aa48be0f773fffe01f04743c69b4f4ad89dd15a303c86ebf40420f1f77c60206"
+        },
+        "supporting.json.gz": {
+          "bytes": 284910,
+          "sha256": "12d17f23457accd099c26785af66dafe2a3d126e4903c97e7a9cd156496597f7",
+          "uncompressed_bytes": 4818394,
+          "uncompressed_sha256": "1377b11bdab4b7be7b86b5e0b565fd6c688a7e079bbab6f3366e551b2eeb7cd7"
+        }
+      },
+      "new_model_calls": 0,
+      "outputs": {
+        "behavior.json": "f1d6263a4224827c9026cb2b2b1fde25778267c67d3e56347448c5eedaf8c6f3",
+        "behavior_tables.md": "0dbe2d5758945c06c551104bca4d1329c01d4bb6d979c17090ff45a5d94a6541"
+      },
+      "reference_float_absolute_tolerance": 1e-12,
+      "source_sha256": "539333ce35abf430cf07a76ecf4e1dfcf37efc09f7537357a053f63567b8cae6",
+      "status": "PASS"
+    }
+  },
+  "mechanism_replay": {
+    "command": "python -m reproduce.mechanism --output <new-output-directory>",
+    "exit_code": 0,
+    "total_saved_returns": 229680,
+    "numeric_comparisons": 11712,
+    "max_absolute_error": 2.842170943040401e-14,
+    "bootstrap_replicates": 20000,
+    "studies": {
+      "fixed_value_mistral": {
+        "counts": {
+          "endpoint": 3240,
+          "exchange": 12960,
+          "total": 16200
+        },
+        "validation": {
+          "absolute_tolerance": 2e-12,
+          "comparisons": 792,
+          "max_absolute_error": 2.842170943040401e-14,
+          "nonidentical_float_values": 16,
+          "scope": "Main pooled/per-fit estimates and intervals, all selected condition/count checks in expected/mechanism.json; not bitwise equality of historical reports.",
+          "status": "PASS"
+        }
+      },
+      "fixed_value_qwen": {
+        "counts": {
+          "endpoint": 3240,
+          "exchange": 12960,
+          "total": 16200
+        },
+        "validation": {
+          "absolute_tolerance": 2e-12,
+          "comparisons": 792,
+          "max_absolute_error": 2.842170943040401e-14,
+          "nonidentical_float_values": 18,
+          "scope": "Main pooled/per-fit estimates and intervals, all selected condition/count checks in expected/mechanism.json; not bitwise equality of historical reports.",
+          "status": "PASS"
+        }
+      },
+      "mapping_mistral": {
+        "counts": {
+          "endpoint": 9720,
+          "exchange": 25920,
+          "total": 35640
+        },
+        "validation": {
+          "absolute_tolerance": 2e-12,
+          "comparisons": 1968,
+          "max_absolute_error": 3.3306690738754696e-16,
+          "nonidentical_float_values": 102,
+          "scope": "Main pooled/per-fit estimates and intervals, all selected condition/count checks in expected/mechanism.json; not bitwise equality of historical reports.",
+          "status": "PASS"
+        }
+      },
+      "mapping_qwen": {
+        "counts": {
+          "endpoint": 9720,
+          "exchange": 25920,
+          "total": 35640
+        },
+        "validation": {
+          "absolute_tolerance": 2e-12,
+          "comparisons": 1968,
+          "max_absolute_error": 4.440892098500626e-16,
+          "nonidentical_float_values": 67,
+          "scope": "Main pooled/per-fit estimates and intervals, all selected condition/count checks in expected/mechanism.json; not bitwise equality of historical reports.",
+          "status": "PASS"
+        }
+      },
+      "native_mistral": {
+        "counts": {
+          "endpoint": 5400,
+          "exchange": 57600,
+          "total": 63000
+        },
+        "validation": {
+          "absolute_tolerance": 2e-12,
+          "comparisons": 3096,
+          "max_absolute_error": 5.551115123125783e-16,
+          "nonidentical_float_values": 166,
+          "scope": "Main pooled/per-fit estimates and intervals, all selected condition/count checks in expected/mechanism.json; not bitwise equality of historical reports.",
+          "status": "PASS"
+        }
+      },
+      "native_qwen": {
+        "counts": {
+          "endpoint": 5400,
+          "exchange": 57600,
+          "total": 63000
+        },
+        "validation": {
+          "absolute_tolerance": 2e-12,
+          "comparisons": 3096,
+          "max_absolute_error": 7.771561172376096e-16,
+          "nonidentical_float_values": 107,
+          "scope": "Main pooled/per-fit estimates and intervals, all selected condition/count checks in expected/mechanism.json; not bitwise equality of historical reports.",
+          "status": "PASS"
+        }
+      }
+    }
+  },
+  "colour_bound": {
+    "command": "python verify_fixed_colour_bound.py",
+    "exit_code": 0,
+    "matches_supplied_symbolic_result": true,
+    "result": {
+      "functions_tested": 46656,
+      "pair_swap_max_successful_source_locations": 3,
+      "pair_swap_max_joint_accuracy_on_balanced_sources": 0.5,
+      "max_joint_correct_on_48_balanced_stories": 24,
+      "attaining_recoder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        0
+      ],
+      "attaining_source_indices": [
+        0,
+        2,
+        4
+      ],
+      "function_counts_by_successful_source_count": {
+        "0": 39202,
+        "1": 7134,
+        "2": 318,
+        "3": 2
+      },
+      "six_cycle_recoder_joint_accuracy": 1.0,
+      "scope": "Fixed functions of actual PCA source-colour answers; balanced sources; joint correctness of both observer colour questions. Not table-, agent- or story-aware programs."
+    }
+  },
+  "project_a_validation": {
+    "command": "python -m pytest -q --junitxml=reports/pytest-paper1-context.xml",
+    "exit_code": 0,
+    "tests_passed": 76,
+    "subtests_passed": 17,
+    "failures": 0,
+    "skips": 0,
+    "junit_testcases": 93,
+    "scope": "CPU/random tiny Qwen/PEFT only; full-vocabulary preflight implemented but pretrained GPU preflight unrun",
+    "source_sha256": {
+      "src/paper2/training/policy.py": "a6354373ab6aeeb0ddd5e52bd10ac05cc83c4d054309264f5c8f61a0a1c243b5",
+      "src/paper2/training/runner.py": "a148d91d6053d2dff39a72ac98446c5f0e19b6ac33744e6bd90084b76788563f",
+      "tests/test_policy.py": "bb93a1b9d9dd643e22742067987ae47c3fa76ae3c533d771c46740513c38f6c3"
+    },
+    "prior_eight_run_cpu_workflow_repeated": false
+  },
+  "evidence_directory": "/workspace/reference_evidence/paper1",
+  "output_files": {
+    "behavior/RECEIPT.json": {
+      "bytes": 1505,
+      "sha256": "bc94d5395d4b095f1dd60913ef76548ff546bb6a21b8e816f6c5db1a51886450"
+    },
+    "behavior/behavior.json": {
+      "bytes": 686932,
+      "sha256": "f1d6263a4224827c9026cb2b2b1fde25778267c67d3e56347448c5eedaf8c6f3"
+    },
+    "behavior/behavior_tables.md": {
+      "bytes": 2328,
+      "sha256": "0dbe2d5758945c06c551104bca4d1329c01d4bb6d979c17090ff45a5d94a6541"
+    },
+    "code_review.md": {
+      "bytes": 13747,
+      "sha256": "38ba714510500ff5392ebafff2dee06e1398c1435c754b2a2514424890b3c8a0"
+    },
+    "colour_bound_check.json": {
+      "bytes": 655,
+      "sha256": "554bf45674a837c70c98e6969422e8d2567505dd5f2c4e695c1b86a82ff0920e"
+    },
+    "manuscript_review.md": {
+      "bytes": 9352,
+      "sha256": "32b6792551d7438b717bdafffb530cc7d452135604c280ea32b1a888ab781aa6"
+    },
+    "mechanism/fixed_value_mistral.json": {
+      "bytes": 21382568,
+      "sha256": "e85c62a53c1496a9534588bf59b7574bb1541faf5398479d1a6ed1afd9c9d849"
+    },
+    "mechanism/fixed_value_qwen.json": {
+      "bytes": 21329398,
+      "sha256": "c96b95af7d2a81858b742281f7cfdc85d3ec063f4cdd4b0a1bc4b2657e176309"
+    },
+    "mechanism/mapping_mistral.json": {
+      "bytes": 45333751,
+      "sha256": "e0164c144888c0785c07bf3d563dd57955c221e5d11a8bf70bed3cda1ab43e46"
+    },
+    "mechanism/mapping_qwen.json": {
+      "bytes": 45239761,
+      "sha256": "7b4a716321a4769ceb11fdccca8f6f94de6165db5d45e6768a1f93f7e25db248"
+    },
+    "mechanism/mechanism_conditions.csv": {
+      "bytes": 88335979,
+      "sha256": "5ed436a9e8f44f42b269ca9316f2bfb8d6b1f6c4176daf92942d207bc3f95062"
+    },
+    "mechanism/mechanism_primary.csv": {
+      "bytes": 5134,
+      "sha256": "1d05ee492a49979126248279883530abe777366007f1782e188d35a1f223b278"
+    },
+    "mechanism/mechanism_summary.json": {
+      "bytes": 47539,
+      "sha256": "0658622c86844f53ba8073a89df16ddf9a3480abc205c0ce60cd0391c12f2bb3"
+    },
+    "mechanism/native_mistral.json": {
+      "bytes": 54719036,
+      "sha256": "cd4d5dd2815be0c6de010a74701408cadb98c474b30995a66c062c253f4a0eb5"
+    },
+    "mechanism/native_qwen.json": {
+      "bytes": 54693604,
+      "sha256": "4555e61c2d971f2555d34deb095105dcecbec16e95b4535788d9974ad509a533"
+    },
+    "project_a_tests.log": {
+      "bytes": 182,
+      "sha256": "f0200decd44fa7de2e63481e90b4c2c98098e5c2fc9b5fcc8c16708282122c5f"
+    },
+    "release_integrity.json": {
+      "bytes": 431,
+      "sha256": "beda74ffb6d2582a30aef749d39ff3e9077f0790edc3c4ee6ee7f5a0f92fd844"
+    },
+    "unittest.log": {
+      "bytes": 8068,
+      "sha256": "b485d2130ebb5a88fa17abe2a9e4b48133cabea3d3615502a1e2f8dad25bfb96"
+    }
+  },
+  "unrun": [
+    "Paper 1 native large-model forward passes and refits",
+    "Paper 1 aggregate reproduction and display generation",
+    "Pretrained Project A LM competence/exploitation/recovery",
+    "Any paid GPU or Colab runtime"
+  ],
+  "historical_qualifications": [
+    "Qwen PCA initializer controls are matched-procedure reconstructions; Mistral controls are exact saved initializers.",
+    "Qwen fixed-value panel has documented CPU closure recovery; replay does not recover a missing historical producer completion marker.",
+    "Narrative bootstraps condition on saved fits, not an independently sampled population of training runs."
+  ],
+  "execution_note": "Commands ran in the pinned Paper 1 release subtree (symbolic check in extracted manuscript) with the Project A virtual environment and OMP_NUM_THREADS=OPENBLAS_NUM_THREADS=MKL_NUM_THREADS=1 for CPU tests/replays. Supplied paper/source were inspected before running them."
+}

@@ -1,0 +1,69 @@
+project: A
+protocol_version: cpu-engineering-1
+seed: 101
+backend: tiny
+output_dir: runs/resume_smoke
+model:
+  id: tiny-test-policy
+  precision: fp32
+  device: cpu
+  hidden_size: 32
+task:
+  locations: 6
+  observers: 2
+  moves: 3
+  protected_fraction: 0.2
+  output_mode: finite_action
+  action_strings:
+  - '0'
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '?'
+  - '!'
+data:
+  path: data/cpu_smoke
+  seed: 9201
+  sizes:
+    train: 72
+    development: 36
+    final_test: 36
+    structural_test: 36
+training:
+  unique_prompts_per_update: 8
+  microbatch_size: 4
+  samples_per_prompt: 8
+  updates_per_rollout_batch: 1
+  learning_rate: 0.001
+  schedule: constant
+  weight_decay: 0.0
+  clip_epsilon: 0.2
+  kl_beta: 0.0
+  entropy_coefficient: 0.0
+  temperature: 1.0
+  exploration_epsilon: 0.0
+  max_grad_norm: 1.0
+  phase_update_cap: 4
+  evaluation_every_updates: 2
+  evaluation_max_tasks: 0
+checkpoint:
+  save_every_updates: 2
+  save_complete_state: true
+  immutable_phase_anchors: true
+budget:
+  mode: cpu_test
+  project_ceiling_usd: 500
+  authorized_spend_usd: 0
+  stage_ceiling_usd: 50
+  stage_caps_usd:
+    validation: 50
+    pilot: 100
+    recovery: 200
+    confirmation: 100
+    reserve: 50
+  hourly_rate_usd: 0
+  job_walltime_cap_minutes: 5
+  contingency_multiplier: 1.25
+  ledger_path: runs/cpu_budget.jsonl

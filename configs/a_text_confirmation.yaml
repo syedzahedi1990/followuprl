@@ -1,0 +1,29 @@
+project: A
+protocol_version: text-confirmation-proposed-1
+backend: text_grpo
+status: gated_pending_finite_action_evidence
+model:
+  id: Qwen/Qwen2.5-0.5B-Instruct
+  revision: null
+  tokenizer_revision: null
+  precision: bf16
+  max_prompt_tokens: 512
+task:
+  locations: 6
+  moves: 5
+  output_mode: trace_json
+training:
+  unique_prompts_per_update: 4
+  samples_per_prompt: 4
+  completion_cap: 64
+  loss_type: dr_grpo
+  scale_rewards: none
+  learning_rate: 0.00002
+  schedule: constant
+  kl_beta: 0.0
+  entropy_coefficient: 0.0
+  temperature: 1.0
+  use_vllm: false
+# The certificate oracle is implemented and CPU-tested.
+# An unrestricted TRL training comparison requires its own validated runner,
+# token-mask/grouping/resume checks, and a passed diagnostic scientific gate.

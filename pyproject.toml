@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=78", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paper2-followuprl"
+version = "0.1.0"
+description = "Controlled recovery experiments after repairing an exploitable verifier"
+requires-python = ">=3.12"
+dependencies = [
+  "numpy>=2.0",
+  "PyYAML>=6.0",
+  "torch>=2.6",
+]
+
+[project.optional-dependencies]
+model = ["transformers>=4.51", "peft>=0.15", "accelerate>=1.5"]
+text = ["trl>=1.16"]
+analysis = ["matplotlib>=3.9", "scipy>=1.14"]
+test = ["pytest>=8"]
+
+[project.scripts]
+paper2 = "paper2.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["model_download: requires network model files", "gpu: requires CUDA"]
+

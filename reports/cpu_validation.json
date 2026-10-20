@@ -1,0 +1,1066 @@
+{
+  "status": "passed",
+  "test_only": true,
+  "scientific_results": false,
+  "runtime": "CPU synthetic text-hash policy",
+  "source_manifest_directory": "runs/cpu-workflow-33406715",
+  "commands": [
+    {
+      "command": [
+        "prepare",
+        "--config",
+        "configs/cpu_smoke.yaml"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.05578873400008888
+    },
+    {
+      "command": [
+        "validate",
+        "--config",
+        "configs/cpu_smoke.yaml",
+        "--cpu-only"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.13960070000007363
+    },
+    {
+      "command": [
+        "preflight",
+        "--config",
+        "configs/cpu_smoke.yaml"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 1.7221559419999721
+    },
+    {
+      "command": [
+        "resume-check",
+        "--config",
+        "configs/resume_smoke.yaml",
+        "--output-dir",
+        "runs/cpu-workflow-33406715/resume"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 5.665852383999891
+    },
+    {
+      "command": [
+        "train",
+        "--config",
+        "configs/cpu_smoke.yaml",
+        "--phase",
+        "clean",
+        "--seed",
+        "101",
+        "--output-dir",
+        "runs/cpu-workflow-33406715/clean"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 1.6299245170000631
+    },
+    {
+      "command": [
+        "train",
+        "--config",
+        "configs/cpu_smoke.yaml",
+        "--phase",
+        "vulnerable",
+        "--seed",
+        "101",
+        "--parent",
+        "runs/cpu-workflow-33406715/clean/clean-clean-seed101-1c371836/checkpoints/step-000004",
+        "--output-dir",
+        "runs/cpu-workflow-33406715/vulnerable"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 1.6179426539999895
+    },
+    {
+      "command": [
+        "train",
+        "--config",
+        "configs/cpu_smoke.yaml",
+        "--phase",
+        "control",
+        "--seed",
+        "101",
+        "--parent",
+        "runs/cpu-workflow-33406715/clean/clean-clean-seed101-1c371836/checkpoints/step-000004",
+        "--output-dir",
+        "runs/cpu-workflow-33406715/control"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 1.6413049510001656
+    },
+    {
+      "command": [
+        "run-plan",
+        "--plan",
+        "runs/cpu-workflow-33406715/recovery_plan.json"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 1.9797831150001457
+    },
+    {
+      "command": [
+        "evaluate",
+        "--manifest",
+        "runs/cpu-workflow-33406715/clean/clean-clean-seed101-1c371836/manifest.json",
+        "--suite",
+        "development"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.9219902460001776
+    },
+    {
+      "command": [
+        "evaluate",
+        "--manifest",
+        "runs/cpu-workflow-33406715/vulnerable/vulnerable-vulnerable-seed101-0c7f1a6d/manifest.json",
+        "--suite",
+        "development"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.9259803730001295
+    },
+    {
+      "command": [
+        "evaluate",
+        "--manifest",
+        "runs/cpu-workflow-33406715/control/control-clean_reference-seed101-4f7e14cf/manifest.json",
+        "--suite",
+        "development"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.9120110270000623
+    },
+    {
+      "command": [
+        "evaluate",
+        "--manifest",
+        "runs/cpu-workflow-33406715/recovery/seed-101/continue/run/recovery-continue-seed101-930b29c6/manifest.json",
+        "--suite",
+        "development"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.9172403970001142
+    },
+    {
+      "command": [
+        "evaluate",
+        "--manifest",
+        "runs/cpu-workflow-33406715/recovery/seed-101/reset_optimizer/run/recovery-reset_optimizer-seed101-b79ab9f3/manifest.json",
+        "--suite",
+        "development"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.9857253730001503
+    },
+    {
+      "command": [
+        "evaluate",
+        "--manifest",
+        "runs/cpu-workflow-33406715/recovery/seed-101/rollback/run/recovery-rollback-seed101-23cf55fa/manifest.json",
+        "--suite",
+        "development"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.9572434369999883
+    },
+    {
+      "command": [
+        "evaluate",
+        "--manifest",
+        "runs/cpu-workflow-33406715/recovery/seed-101/continue_exploration/run/recovery-continue_exploration-seed101-04f77388/manifest.json",
+        "--suite",
+        "development"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.9598330489998261
+    },
+    {
+      "command": [
+        "evaluate",
+        "--manifest",
+        "runs/cpu-workflow-33406715/recovery/seed-101/clean_reference/run/recovery-clean_reference-seed101-2a670521/manifest.json",
+        "--suite",
+        "development"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.9129514319999998
+    },
+    {
+      "command": [
+        "analyse",
+        "--manifest",
+        "runs/cpu-workflow-33406715/recovery/seed-101/continue/run/recovery-continue-seed101-930b29c6/manifest.json"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.07342666799991093
+    },
+    {
+      "command": [
+        "export",
+        "--manifest",
+        "runs/cpu-workflow-33406715/recovery/seed-101/continue/run/recovery-continue-seed101-930b29c6/manifest.json",
+        "--destination",
+        "runs/cpu-workflow-33406715/local-export-check"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.060036937999939255
+    }
+  ],
+  "oracles_and_verifiers": {
+    "exhaustive_max_horizon": 2,
+    "oracle_episodes_checked": 4606,
+    "random_long_episodes": 1000,
+    "reward_table_cells": 48,
+    "status": "passed"
+  },
+  "preflight": {
+    "elapsed_seconds": 0.0029227969998828485,
+    "policy": {
+      "action_strings": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "?",
+        "!"
+      ],
+      "model_id": "test-only-text-hash-linear-policy",
+      "precision": "float32",
+      "revision": "builtin-v1",
+      "test_only": true,
+      "tokenizer_revision": "none"
+    },
+    "scientific_claims": false,
+    "status": "passed",
+    "step": {
+      "adam_first_moment_norm": 0.06374185500536637,
+      "adam_second_moment_norm": 7.985021472080546e-05,
+      "all_one_fraction": 0.0,
+      "all_zero_fraction": 0.5,
+      "entropy": 2.0693116188049316,
+      "kl_beta": 0.0,
+      "kl_gradient_norm": 0.0,
+      "loss": 0.0,
+      "mean_training_reward": 0.0625,
+      "mixed_group_fraction": 0.5,
+      "optimizer_step_max": 1.0,
+      "optimizer_step_min": 1.0,
+      "parameter_update_norm": 0.015198654291044437,
+      "sampled_actions": 16,
+      "task_gradient_norm": 0.6374185426596393,
+      "total_gradient_norm": 0.6374185426596393,
+      "training_invalid_probability": 0.26806406676769257,
+      "unique_prompts": 2,
+      "valid_probability": 0.731935977935791,
+      "zero_variance_fraction": 0.5
+    },
+    "test_only": true
+  },
+  "resume": {
+    "backend": "CPU float32 tiny policy",
+    "budget": {
+      "accounting_scope": "Process runtime and explicitly reconciled extras; provider idle/storage charges unknown unless recorded.",
+      "active_jobs": [],
+      "by_job_usd": {
+        "clean-clean-seed101-2962e84f:segment:ab43c228da": 0.0,
+        "clean-clean-seed101-9ef85b9e:segment:1c3134ee21": 0.0,
+        "control-clean_reference-seed101-d84b29c2:segment:db018aa849": 0.0,
+        "recovery-clean_reference-seed101-c7d97964:segment:c560e2e6ba": 0.0,
+        "recovery-continue-seed101-f3dab21a:segment:f9dbcd956d": 0.0,
+        "recovery-continue_exploration-seed101-0aaa1f18:segment:a1bf7beafc": 0.0,
+        "recovery-reset_optimizer-seed101-572e1d02:segment:da1523e392": 0.0,
+        "recovery-rollback-seed101-71bfccc1:segment:0b347e90a7": 0.0,
+        "resume-check:resume-a01da0b1": 0.0,
+        "resume-check:resume-b0f66264": 0.0,
+        "vulnerable-vulnerable-seed101-99a7804c:segment:e4c6d62f1b": 0.0
+      },
+      "by_stage_usd": {
+        "recovery": 0.0,
+        "validation": 0.0
+      },
+      "colab_seconds": 0.0,
+      "compute_units": null,
+      "cpu_seconds": 12.947454981999954,
+      "entries": 69,
+      "last_entry_sha256": "bf24f79d713a1eee8f28c8a0875e4e839e75f5c0d1f08fbb42025566522d3aba",
+      "paid_process_seconds": 0.0,
+      "reservations_usd": {},
+      "reserved_by_stage_usd": {},
+      "reserved_usd": 0,
+      "total_runtime_seconds": 12.947454981999954,
+      "total_usd": 0.0,
+      "unmetered_colab_seconds": 0.0
+    },
+    "fresh_process": true,
+    "interruption_update": 3,
+    "max_parameter_difference": 0.0,
+    "next_prompts_actions_losses_equal": true,
+    "optimizer_state_equal": true,
+    "output_dir": "runs/cpu-workflow-33406715/resume/resume-b0f66264",
+    "processes": [
+      {
+        "command": "full",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      {
+        "command": "partial",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      {
+        "command": "resume",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      }
+    ],
+    "sampler_counters_equal": true,
+    "status": "passed",
+    "test_only": true,
+    "updates": 6
+  },
+  "runs": [
+    {
+      "run_id": "clean-clean-seed101-1c371836",
+      "status": "success",
+      "phase": "clean",
+      "arm": "clean",
+      "metrics": {
+        "by_family": {
+          "arithmetic": {
+            "conditional_valid_correct": 0.1551702364513889,
+            "conditional_valid_denominator": 3.075022302567959,
+            "conditional_valid_mean_per_prompt": 0.15553543044515292,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 4,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.064443526096266,
+            "n": 4,
+            "p_correct": 0.11928798444569111,
+            "p_invalid": 0.23124434798955917,
+            "p_valid": 0.7687555756419897,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "belief": {
+            "conditional_valid_correct": 0.16837288818292429,
+            "conditional_valid_denominator": 26.961576260626316,
+            "conditional_valid_mean_per_prompt": 0.16855095837964265,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 36,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0683993913250496,
+            "n": 36,
+            "p_correct": 0.12609995736016166,
+            "p_invalid": 0.25106732381714714,
+            "p_valid": 0.7489326739062866,
+            "valid_only_ranking_accuracy": 0.19444444444444445,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "world": {
+            "conditional_valid_correct": 0.1517299974440181,
+            "conditional_valid_denominator": 3.705465815961361,
+            "conditional_valid_mean_per_prompt": 0.15157315824456963,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 5,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.070590113334278,
+            "n": 5,
+            "p_correct": 0.11244606375694274,
+            "p_invalid": 0.25890683084726335,
+            "p_valid": 0.7410931631922721,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          }
+        },
+        "checkpoint": "runs/cpu-workflow-33406715/clean/clean-clean-seed101-1c371836/checkpoints/step-000004",
+        "decoder": "underlying_8_action_softmax_temperature_1",
+        "evaluation_policy": "caller-supplied; primary must be underlying p at temperature 1",
+        "manifest": "runs/cpu-workflow-33406715/clean/clean-clean-seed101-1c371836/manifest.json",
+        "overall": {
+          "conditional_valid_correct": 0.16534200927492,
+          "conditional_valid_denominator": 33.742064379155636,
+          "conditional_valid_mean_per_prompt": 0.16550760032601322,
+          "conditional_valid_negligible_prompts": 0,
+          "conditional_valid_prompt_count": 45,
+          "mass_tolerance": 1e-12,
+          "mean_policy_entropy": 2.06829117241685,
+          "n": 45,
+          "p_correct": 0.12397734936740663,
+          "p_invalid": 0.2501763378580411,
+          "p_valid": 0.7498236528701252,
+          "valid_only_ranking_accuracy": 0.15555555555555556,
+          "valid_only_tie_rule": "smallest digit (argmax first)"
+        },
+        "protocol_id": null,
+        "suite": "development",
+        "test_only": true
+      }
+    },
+    {
+      "run_id": "vulnerable-vulnerable-seed101-0c7f1a6d",
+      "status": "success",
+      "phase": "vulnerable",
+      "arm": "vulnerable",
+      "metrics": {
+        "by_family": {
+          "arithmetic": {
+            "conditional_valid_correct": 0.15530048631099924,
+            "conditional_valid_denominator": 3.0746654123067856,
+            "conditional_valid_mean_per_prompt": 0.15562775593565506,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 4,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.064537469864786,
+            "n": 4,
+            "p_correct": 0.11937425844371319,
+            "p_invalid": 0.23133363015949726,
+            "p_valid": 0.7686663530766964,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "belief": {
+            "conditional_valid_correct": 0.16865053646547815,
+            "conditional_valid_denominator": 26.943369917571545,
+            "conditional_valid_mean_per_prompt": 0.168820967831515,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 36,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.068391441755702,
+            "n": 36,
+            "p_correct": 0.1262226052996185,
+            "p_invalid": 0.2515730613635646,
+            "p_valid": 0.7484269421547651,
+            "valid_only_ranking_accuracy": 0.19444444444444445,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "world": {
+            "conditional_valid_correct": 0.152223478452714,
+            "conditional_valid_denominator": 3.703894756734371,
+            "conditional_valid_mean_per_prompt": 0.15207214503337801,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 5,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0705161638748506,
+            "n": 5,
+            "p_correct": 0.11276394873857498,
+            "p_invalid": 0.2592210963368416,
+            "p_valid": 0.7407789513468742,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          }
+        },
+        "checkpoint": "runs/cpu-workflow-33406715/vulnerable/vulnerable-vulnerable-seed101-0c7f1a6d/checkpoints/step-000004",
+        "decoder": "underlying_8_action_softmax_temperature_1",
+        "evaluation_policy": "caller-supplied; primary must be underlying p at temperature 1",
+        "manifest": "runs/cpu-workflow-33406715/vulnerable/vulnerable-vulnerable-seed101-0c7f1a6d/manifest.json",
+        "overall": {
+          "conditional_valid_correct": 0.16562902994900994,
+          "conditional_valid_denominator": 33.7219300866127,
+          "conditional_valid_mean_per_prompt": 0.16578725757431223,
+          "conditional_valid_negligible_prompts": 0,
+          "conditional_valid_prompt_count": 45,
+          "mass_tolerance": 1e-12,
+          "mean_policy_entropy": 2.0682849467119704,
+          "n": 45,
+          "p_correct": 0.12411845707231098,
+          "p_invalid": 0.25062378247578937,
+          "p_valid": 0.7493762241469489,
+          "valid_only_ranking_accuracy": 0.15555555555555556,
+          "valid_only_tie_rule": "smallest digit (argmax first)"
+        },
+        "protocol_id": null,
+        "suite": "development",
+        "test_only": true
+      }
+    },
+    {
+      "run_id": "control-clean_reference-seed101-4f7e14cf",
+      "status": "success",
+      "phase": "control",
+      "arm": "clean_reference",
+      "metrics": {
+        "by_family": {
+          "arithmetic": {
+            "conditional_valid_correct": 0.15511818320859286,
+            "conditional_valid_denominator": 3.0761460289359093,
+            "conditional_valid_mean_per_prompt": 0.15546485032479176,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 4,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0644224351757305,
+            "n": 4,
+            "p_correct": 0.11929154582321644,
+            "p_invalid": 0.23096352815628052,
+            "p_valid": 0.7690365072339773,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "belief": {
+            "conditional_valid_correct": 0.16859880730358873,
+            "conditional_valid_denominator": 26.986812502145767,
+            "conditional_valid_mean_per_prompt": 0.16876918367773608,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 36,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0683782637856405,
+            "n": 36,
+            "p_correct": 0.1263873444663154,
+            "p_invalid": 0.25036632973286843,
+            "p_valid": 0.7496336806151602,
+            "valid_only_ranking_accuracy": 0.19444444444444445,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "world": {
+            "conditional_valid_correct": 0.15208738124489746,
+            "conditional_valid_denominator": 3.7089788541197777,
+            "conditional_valid_mean_per_prompt": 0.15193162283001344,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 5,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.070469812464669,
+            "n": 5,
+            "p_correct": 0.11281777620315551,
+            "p_invalid": 0.25820419639348985,
+            "p_valid": 0.7417957708239555,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          }
+        },
+        "checkpoint": "runs/cpu-workflow-33406715/control/control-clean_reference-seed101-4f7e14cf/checkpoints/step-000004",
+        "decoder": "underlying_8_action_softmax_temperature_1",
+        "evaluation_policy": "caller-supplied; primary must be underlying p at temperature 1",
+        "manifest": "runs/cpu-workflow-33406715/control/control-clean_reference-seed101-4f7e14cf/manifest.json",
+        "overall": {
+          "conditional_valid_correct": 0.165557557486945,
+          "conditional_valid_denominator": 33.771937385201454,
+          "conditional_valid_mean_per_prompt": 0.16571573617439406,
+          "conditional_valid_negligible_prompts": 0,
+          "conditional_valid_prompt_count": 45,
+          "mass_tolerance": 1e-12,
+          "mean_policy_entropy": 2.0682590288735407,
+          "n": 45,
+          "p_correct": 0.12424887700213326,
+          "p_invalid": 0.2495125103327963,
+          "p_valid": 0.7504874974489212,
+          "valid_only_ranking_accuracy": 0.15555555555555556,
+          "valid_only_tie_rule": "smallest digit (argmax first)"
+        },
+        "protocol_id": null,
+        "suite": "development",
+        "test_only": true
+      }
+    },
+    {
+      "run_id": "recovery-continue-seed101-930b29c6",
+      "status": "success",
+      "phase": "recovery",
+      "arm": "continue",
+      "metrics": {
+        "by_family": {
+          "arithmetic": {
+            "conditional_valid_correct": 0.15521441250062792,
+            "conditional_valid_denominator": 3.073410138487816,
+            "conditional_valid_mean_per_prompt": 0.15553234280356268,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 4,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0644561995269526,
+            "n": 4,
+            "p_correct": 0.11925938725471497,
+            "p_invalid": 0.23164749704301357,
+            "p_valid": 0.768352534621954,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "belief": {
+            "conditional_valid_correct": 0.1688675729083333,
+            "conditional_valid_denominator": 26.927860729396343,
+            "conditional_valid_mean_per_prompt": 0.16903602815211605,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 36,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0683624810977266,
+            "n": 36,
+            "p_correct": 0.12631229124963284,
+            "p_invalid": 0.2520038742158148,
+            "p_valid": 0.7479961313721206,
+            "valid_only_ranking_accuracy": 0.16666666666666666,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "world": {
+            "conditional_valid_correct": 0.15260948455539608,
+            "conditional_valid_denominator": 3.7017877027392387,
+            "conditional_valid_mean_per_prompt": 0.15246810407256384,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 5,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0704597649503103,
+            "n": 5,
+            "p_correct": 0.11298558264970779,
+            "p_invalid": 0.2596424087882042,
+            "p_valid": 0.7403575405478477,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          }
+        },
+        "checkpoint": "runs/cpu-workflow-33406715/recovery/seed-101/continue/run/recovery-continue-seed101-930b29c6/checkpoints/step-000004",
+        "decoder": "underlying_8_action_softmax_temperature_1",
+        "evaluation_policy": "caller-supplied; primary must be underlying p at temperature 1",
+        "manifest": "runs/cpu-workflow-33406715/recovery/seed-101/continue/run/recovery-continue-seed101-930b29c6/manifest.json",
+        "overall": {
+          "conditional_valid_correct": 0.16583681672517114,
+          "conditional_valid_denominator": 33.7030585706234,
+          "conditional_valid_mean_per_prompt": 0.1659948201122944,
+          "conditional_valid_negligible_prompts": 0,
+          "conditional_valid_prompt_count": 45,
+          "mass_tolerance": 1e-12,
+          "mean_policy_entropy": 2.068248287608389,
+          "n": 45,
+          "p_correct": 0.1242046210500929,
+          "p_invalid": 0.2510431445307202,
+          "p_valid": 0.7489568571249644,
+          "valid_only_ranking_accuracy": 0.13333333333333333,
+          "valid_only_tie_rule": "smallest digit (argmax first)"
+        },
+        "protocol_id": null,
+        "suite": "development",
+        "test_only": true
+      }
+    },
+    {
+      "run_id": "recovery-reset_optimizer-seed101-b79ab9f3",
+      "status": "success",
+      "phase": "recovery",
+      "arm": "reset_optimizer",
+      "metrics": {
+        "by_family": {
+          "arithmetic": {
+            "conditional_valid_correct": 0.1546408957239495,
+            "conditional_valid_denominator": 3.076170228421688,
+            "conditional_valid_mean_per_prompt": 0.15496852653669585,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 4,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0642021983499674,
+            "n": 4,
+            "p_correct": 0.11892542988061905,
+            "p_invalid": 0.23095744848251343,
+            "p_valid": 0.769042557105422,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "belief": {
+            "conditional_valid_correct": 0.16878769189833503,
+            "conditional_valid_denominator": 26.967918626964092,
+            "conditional_valid_mean_per_prompt": 0.1689568089010542,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 36,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.068389011213092,
+            "n": 36,
+            "p_correct": 0.12644035389853847,
+            "p_invalid": 0.25089114180041683,
+            "p_valid": 0.7491088507490026,
+            "valid_only_ranking_accuracy": 0.19444444444444445,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "world": {
+            "conditional_valid_correct": 0.1521811710608095,
+            "conditional_valid_denominator": 3.709414802491665,
+            "conditional_valid_mean_per_prompt": 0.15204053432850972,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 5,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0706171899989156,
+            "n": 5,
+            "p_correct": 0.1129006177186966,
+            "p_invalid": 0.2581170707941055,
+            "p_valid": 0.741882960498333,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          }
+        },
+        "checkpoint": "runs/cpu-workflow-33406715/recovery/seed-101/reset_optimizer/run/recovery-reset_optimizer-seed101-b79ab9f3/checkpoints/step-000004",
+        "decoder": "underlying_8_action_softmax_temperature_1",
+        "evaluation_policy": "caller-supplied; primary must be underlying p at temperature 1",
+        "manifest": "runs/cpu-workflow-33406715/recovery/seed-101/reset_optimizer/run/recovery-reset_optimizer-seed101-b79ab9f3/manifest.json",
+        "overall": {
+          "conditional_valid_correct": 0.1656733951279236,
+          "conditional_valid_denominator": 33.753503657877445,
+          "conditional_valid_mean_per_prompt": 0.16583381996060628,
+          "conditional_valid_negligible_prompts": 0,
+          "conditional_valid_prompt_count": 45,
+          "mass_tolerance": 1e-12,
+          "mean_policy_entropy": 2.06826442549035,
+          "n": 45,
+          "p_correct": 0.12426794552140766,
+          "p_invalid": 0.2499221389492353,
+          "p_valid": 0.7500778590639432,
+          "valid_only_ranking_accuracy": 0.15555555555555556,
+          "valid_only_tie_rule": "smallest digit (argmax first)"
+        },
+        "protocol_id": null,
+        "suite": "development",
+        "test_only": true
+      }
+    },
+    {
+      "run_id": "recovery-rollback-seed101-23cf55fa",
+      "status": "success",
+      "phase": "recovery",
+      "arm": "rollback",
+      "metrics": {
+        "by_family": {
+          "arithmetic": {
+            "conditional_valid_correct": 0.15489357160972234,
+            "conditional_valid_denominator": 3.0759598836302757,
+            "conditional_valid_mean_per_prompt": 0.15524053508045085,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 4,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0642793006987055,
+            "n": 4,
+            "p_correct": 0.11911160312592983,
+            "p_invalid": 0.23100999370217323,
+            "p_valid": 0.7689899709075689,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "belief": {
+            "conditional_valid_correct": 0.1685805235682749,
+            "conditional_valid_denominator": 26.985819183290005,
+            "conditional_valid_mean_per_prompt": 0.1687500118204609,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 36,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.068399085844103,
+            "n": 36,
+            "p_correct": 0.12636898685660627,
+            "p_invalid": 0.2503939097126325,
+            "p_valid": 0.7496060884247223,
+            "valid_only_ranking_accuracy": 0.19444444444444445,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "world": {
+            "conditional_valid_correct": 0.1520538226836391,
+            "conditional_valid_denominator": 3.7094167545437813,
+            "conditional_valid_mean_per_prompt": 0.15190768806760538,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 5,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.070615878750234,
+            "n": 5,
+            "p_correct": 0.11280619949102402,
+            "p_invalid": 0.2581166923046112,
+            "p_valid": 0.7418833509087562,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          }
+        },
+        "checkpoint": "runs/cpu-workflow-33406715/recovery/seed-101/rollback/run/recovery-rollback-seed101-23cf55fa/checkpoints/step-000004",
+        "decoder": "underlying_8_action_softmax_temperature_1",
+        "evaluation_policy": "caller-supplied; primary must be underlying p at temperature 1",
+        "manifest": "runs/cpu-workflow-33406715/recovery/seed-101/rollback/run/recovery-rollback-seed101-23cf55fa/manifest.json",
+        "overall": {
+          "conditional_valid_correct": 0.16551859656814297,
+          "conditional_valid_denominator": 33.77119582146406,
+          "conditional_valid_mean_per_prompt": 0.16567780013769828,
+          "conditional_valid_negligible_prompts": 0,
+          "conditional_valid_prompt_count": 45,
+          "mass_tolerance": 1e-12,
+          "mean_policy_entropy": 2.068279193042971,
+          "n": 45,
+          "p_correct": 0.12421690970659256,
+          "p_invalid": 0.24952898191081152,
+          "p_valid": 0.7504710182547569,
+          "valid_only_ranking_accuracy": 0.15555555555555556,
+          "valid_only_tie_rule": "smallest digit (argmax first)"
+        },
+        "protocol_id": null,
+        "suite": "development",
+        "test_only": true
+      }
+    },
+    {
+      "run_id": "recovery-continue_exploration-seed101-04f77388",
+      "status": "success",
+      "phase": "recovery",
+      "arm": "continue_exploration",
+      "metrics": {
+        "by_family": {
+          "arithmetic": {
+            "conditional_valid_correct": 0.15521607405024104,
+            "conditional_valid_denominator": 3.0734067112207413,
+            "conditional_valid_mean_per_prompt": 0.1555340395930762,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 4,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.064457004097836,
+            "n": 4,
+            "p_correct": 0.1192605309188366,
+            "p_invalid": 0.2316483110189438,
+            "p_valid": 0.7683516778051853,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "belief": {
+            "conditional_valid_correct": 0.16886698384020077,
+            "conditional_valid_denominator": 26.927746191620827,
+            "conditional_valid_mean_per_prompt": 0.1690354162045731,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 36,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0683625030159103,
+            "n": 36,
+            "p_correct": 0.1263113133609295,
+            "p_invalid": 0.2520070409195291,
+            "p_valid": 0.7479929497672452,
+            "valid_only_ranking_accuracy": 0.16666666666666666,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "world": {
+            "conditional_valid_correct": 0.1526101194434209,
+            "conditional_valid_denominator": 3.7017764523625374,
+            "conditional_valid_mean_per_prompt": 0.15246867423429367,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 5,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0704589979052335,
+            "n": 5,
+            "p_correct": 0.11298570930957794,
+            "p_invalid": 0.2596447467803955,
+            "p_valid": 0.7403552904725075,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          }
+        },
+        "checkpoint": "runs/cpu-workflow-33406715/recovery/seed-101/continue_exploration/run/recovery-continue_exploration-seed101-04f77388/checkpoints/step-000004",
+        "decoder": "underlying_8_action_softmax_temperature_1",
+        "evaluation_policy": "caller-supplied; primary must be underlying p at temperature 1",
+        "manifest": "runs/cpu-workflow-33406715/recovery/seed-101/continue_exploration/run/recovery-continue_exploration-seed101-04f77388/manifest.json",
+        "overall": {
+          "conditional_valid_correct": 0.16583656252282614,
+          "conditional_valid_denominator": 33.702929355204105,
+          "conditional_valid_mean_per_prompt": 0.16599454473129788,
+          "conditional_valid_negligible_prompts": 0,
+          "conditional_valid_prompt_count": 45,
+          "mass_tolerance": 1e-12,
+          "mean_policy_entropy": 2.0682482914331173,
+          "n": 45,
+          "p_correct": 0.12420395447148216,
+          "p_invalid": 0.2510460100240178,
+          "p_valid": 0.7489539856712023,
+          "valid_only_ranking_accuracy": 0.13333333333333333,
+          "valid_only_tie_rule": "smallest digit (argmax first)"
+        },
+        "protocol_id": null,
+        "suite": "development",
+        "test_only": true,
+        "training_mixture": {
+          "by_family": {
+            "arithmetic": {
+              "conditional_valid_correct": 0.1554397229090204,
+              "conditional_valid_denominator": 3.0719385769963266,
+              "conditional_valid_mean_per_prompt": 0.1557455456943461,
+              "conditional_valid_negligible_prompts": 0,
+              "conditional_valid_prompt_count": 4,
+              "mass_tolerance": 1e-12,
+              "mean_policy_entropy": 2.065065943547749,
+              "n": 4,
+              "p_correct": 0.11937532030045986,
+              "p_invalid": 0.2320153447985649,
+              "p_valid": 0.7679846442490816,
+              "valid_only_ranking_accuracy": 0.0,
+              "valid_only_tie_rule": "smallest digit (argmax first)"
+            },
+            "belief": {
+              "conditional_valid_correct": 0.1688228617846257,
+              "conditional_valid_denominator": 26.92919126778841,
+              "conditional_valid_mean_per_prompt": 0.16898455901681814,
+              "conditional_valid_negligible_prompts": 0,
+              "conditional_valid_prompt_count": 36,
+              "mass_tolerance": 1e-12,
+              "mean_policy_entropy": 2.0688008888289273,
+              "n": 36,
+              "p_correct": 0.1262850870937109,
+              "p_invalid": 0.2519669001011385,
+              "p_valid": 0.7480330907719003,
+              "valid_only_ranking_accuracy": 0.16666666666666666,
+              "valid_only_tie_rule": "smallest digit (argmax first)"
+            },
+            "world": {
+              "conditional_valid_correct": 0.15289483853762084,
+              "conditional_valid_denominator": 3.702740923315287,
+              "conditional_valid_mean_per_prompt": 0.15275909448379058,
+              "conditional_valid_negligible_prompts": 0,
+              "conditional_valid_prompt_count": 5,
+              "mass_tolerance": 1e-12,
+              "mean_policy_entropy": 2.0708171319951942,
+              "n": 5,
+              "p_correct": 0.11322599512338638,
+              "p_invalid": 0.2594518518447876,
+              "p_valid": 0.7405481846630574,
+              "valid_only_ranking_accuracy": 0.0,
+              "valid_only_tie_rule": "smallest digit (argmax first)"
+            }
+          },
+          "evaluation_policy": "caller-supplied; primary must be underlying p at temperature 1",
+          "overall": {
+            "conditional_valid_correct": 0.16585318732835508,
+            "conditional_valid_denominator": 33.703870768100025,
+            "conditional_valid_mean_per_prompt": 0.16600492844003978,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 45,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.068692920711297,
+            "n": 45,
+            "p_correct": 0.12421987538205252,
+            "p_invalid": 0.2510250898235374,
+            "p_valid": 0.7489749059577783,
+            "valid_only_ranking_accuracy": 0.13333333333333333,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          }
+        }
+      }
+    },
+    {
+      "run_id": "recovery-clean_reference-seed101-2a670521",
+      "status": "success",
+      "phase": "recovery",
+      "arm": "clean_reference",
+      "metrics": {
+        "by_family": {
+          "arithmetic": {
+            "conditional_valid_correct": 0.15498192019324167,
+            "conditional_valid_denominator": 3.078070491552353,
+            "conditional_valid_mean_per_prompt": 0.15532080631242415,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 4,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.064244363135793,
+            "n": 4,
+            "p_correct": 0.11926131881773472,
+            "p_invalid": 0.23048238828778267,
+            "p_valid": 0.7695176228880882,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "belief": {
+            "conditional_valid_correct": 0.16878471249012547,
+            "conditional_valid_denominator": 27.01848515868187,
+            "conditional_valid_mean_per_prompt": 0.168952620001474,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 36,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0683136257920394,
+            "n": 36,
+            "p_correct": 0.12667520137296784,
+            "p_invalid": 0.2494865262673961,
+            "p_valid": 0.750513476630052,
+            "valid_only_ranking_accuracy": 0.19444444444444445,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          },
+          "world": {
+            "conditional_valid_correct": 0.1523889471754593,
+            "conditional_valid_denominator": 3.713266536593437,
+            "conditional_valid_mean_per_prompt": 0.15223534209103395,
+            "conditional_valid_negligible_prompts": 0,
+            "conditional_valid_prompt_count": 5,
+            "mass_tolerance": 1e-12,
+            "mean_policy_entropy": 2.0704062001202415,
+            "n": 5,
+            "p_correct": 0.1131721556186676,
+            "p_invalid": 0.2573467239737511,
+            "p_valid": 0.7426533073186874,
+            "valid_only_ranking_accuracy": 0.0,
+            "valid_only_tie_rule": "smallest digit (argmax first)"
+          }
+        },
+        "checkpoint": "runs/cpu-workflow-33406715/recovery/seed-101/clean_reference/run/recovery-clean_reference-seed101-2a670521/checkpoints/step-000004",
+        "decoder": "underlying_8_action_softmax_temperature_1",
+        "evaluation_policy": "caller-supplied; primary must be underlying p at temperature 1",
+        "manifest": "runs/cpu-workflow-33406715/recovery/seed-101/clean_reference/run/recovery-clean_reference-seed101-2a670521/manifest.json",
+        "overall": {
+          "conditional_valid_correct": 0.16572738158244843,
+          "conditional_valid_denominator": 33.80982218682766,
+          "conditional_valid_mean_per_prompt": 0.1658834279057318,
+          "conditional_valid_negligible_prompts": 0,
+          "conditional_valid_prompt_count": 45,
+          "mass_tolerance": 1e-12,
+          "mean_policy_entropy": 2.0681844218146175,
+          "n": 45,
+          "p_correct": 0.12451585117313597,
+          "p_invalid": 0.24867062485880323,
+          "p_valid": 0.7513293819295035,
+          "valid_only_ranking_accuracy": 0.15555555555555556,
+          "valid_only_tie_rule": "smallest digit (argmax first)"
+        },
+        "protocol_id": null,
+        "suite": "development",
+        "test_only": true
+      }
+    }
+  ],
+  "analysis": {
+    "auc_records": [],
+    "claim_ledger": [
+      {
+        "claim": "Vulnerable RL increases accepted errors",
+        "required": "Matched correct-verifier control and pre/post independently trained measurements.",
+        "status": "unresolved"
+      },
+      {
+        "claim": "Carrying optimizer state changes recovery",
+        "required": "Paired identical-policy branches with isolated optimizer treatment and uncertainty.",
+        "status": "unresolved"
+      },
+      {
+        "claim": "New recovery method improves on simple controls",
+        "required": "Information- and compute-matched exploration, reset, rollback and generic correction.",
+        "status": "unresolved"
+      },
+      {
+        "claim": "Result extends beyond the eight-action diagnostic",
+        "required": "Unrestricted-generation confirmation or materially different verifier defect.",
+        "status": "unresolved"
+      }
+    ],
+    "evaluation_records": 3,
+    "figures": [],
+    "manifest": "runs/cpu-workflow-33406715/recovery/seed-101/continue/run/recovery-continue-seed101-930b29c6/manifest.json",
+    "notes": [
+      "AUC not computed: declare a common analysis.auc_budget_seconds before comparison.",
+      "CPU/test-only measurements retained; publication research plots suppressed."
+    ],
+    "paired_comparisons": {},
+    "report_path": "runs/cpu-workflow-33406715/recovery/seed-101/continue/run/recovery-continue-seed101-930b29c6/analysis/report.md",
+    "run_status": "success",
+    "summary_path": "runs/cpu-workflow-33406715/recovery/seed-101/continue/run/recovery-continue-seed101-930b29c6/analysis/summary.json"
+  },
+  "local_export": {
+    "export_path": "/workspace/followuprl/runs/cpu-workflow-33406715/local-export-check/recovery-continue-seed101-930b29c6-20261020T134427Z-922bb065",
+    "snapshot_count": 6,
+    "source_manifest_sha256": "93cfc88bd86331cc3a491d1bcdef94624d9d7bece78ed65b0e5b8e294f804d16",
+    "status": "verified",
+    "verified_files": 35
+  },
+  "durability_verified": false,
+  "final_test_opened": false,
+  "limitations": [
+    "No pretrained weights/tokenizer or CUDA execution were available.",
+    "Synthetic-policy curves do not establish learned LM exploitation or recovery.",
+    "Local export verification is not proof of external durable storage.",
+    "The final evaluation sets remain unopened."
+  ]
+}
